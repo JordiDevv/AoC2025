@@ -1,7 +1,6 @@
 #ifndef DECODER_HPP
 #define DECODER_HPP
 
-#include <iostream>
 #include <fstream>
 
 class Decoder
@@ -12,6 +11,10 @@ class Decoder
         std::string line;
         bool end = false;
     public:
+        int checkFormat(char *order);
+        int cleanNumber(int n);
+
+        void applyOrder(char sense);
         void decrementPos(const int dec);
         void incrementPos(const int inc);
 

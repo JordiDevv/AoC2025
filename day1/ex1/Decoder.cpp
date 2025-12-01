@@ -1,6 +1,8 @@
 #include "Decoder.hpp"
+#include <iostream>
 #include <fstream>
 
+//Reading methods
 void Decoder::getNewFile(char *rute)
 {
     file.open(rute);
@@ -10,3 +12,6 @@ void Decoder::getNewFile(char *rute)
         exit (1);
     }
 }
+
+void Decoder::getNextLine()
+{ if (!std::getline(file, line)) line.clear(); }
