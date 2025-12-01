@@ -1,2 +1,2 @@
 all :
-	g++ ex1.cpp
+	g++ main.cpp Decoder.cpp -I./defs

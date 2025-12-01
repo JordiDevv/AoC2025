@@ -10,16 +10,19 @@ class Decoder
         std::ifstream file;
         std::string line;
         bool end = false;
+        int password = 0;
     public:
-        int checkFormat(char *order);
+        int checkFormat();
         int cleanNumber(int n);
 
-        void applyOrder(char sense);
+        void applyOrder(const int n);
         void decrementPos(const int dec);
         void incrementPos(const int inc);
 
-        void getNewFile(char *rute);
+        void getNewFile(const char *rute);
         void getNextLine();
+        bool isEnd();
+        int getPassword();
 };
 
 #endif
