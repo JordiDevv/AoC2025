@@ -17,6 +17,8 @@ class Decoder
         void split(char del);
 
         void idAnalyzer(std::string id);
+        void incPassword(int inc);
+        void getPassword() const;
 };
 
 #endif
