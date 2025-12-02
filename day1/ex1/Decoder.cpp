@@ -8,7 +8,6 @@ int Decoder::checkFormat()
     if (!line.c_str()) return -1;
 
     const char *order = line.c_str();
-    std::cout << order[0] << std::endl;
     if (order[0] != 'L' && order[0] != 'R')
     {
         std::cout << "Some order is in a wrong format." << std::endl;
@@ -54,7 +53,13 @@ void Decoder::getNewFile(const char *rute)
 }
 
 void Decoder::getNextLine()
-{ if (!std::getline(file, line)) line.clear(); }
+{
+    if (!std::getline(file, line))
+    {
+        line.clear();
+        end = true;
+    }
+}
 
 bool Decoder::isEnd() { return end; }
 int Decoder::getPassword() { return password; }

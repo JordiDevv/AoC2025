@@ -6,7 +6,7 @@ int main()
 {
     Decoder decoder;
 
-    decoder.getNewFile("prueba.txt");
+    decoder.getNewFile("input.txt");
     decoder.getNextLine();
 
     while (!decoder.isEnd())
