@@ -14,8 +14,9 @@ class Decoder
     public:
         void addNewFile(const char *rute);
         void parseInput();
-
         void split(char del);
+
+        void idAnalyzer(std::string id);
 };
 
 #endif

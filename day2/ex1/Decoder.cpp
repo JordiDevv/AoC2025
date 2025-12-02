@@ -30,7 +30,17 @@ void Decoder::split(char del)
     }
 }
 
-void idAnalyzer(const std::string first, const std::string last)
+//Decoding methods
+
+void Decoder::idAnalyzer(const std::string id)
 {
-    
+    char beg = id[0];
+    int i;
+    size_t len = 0;
+
+    for (i = 0; i < id.size() || beg == id[i]; i++) len++;
+    if (i == id.size()) return;
+    std::string pattern = id.substr(beg, len);
+    if (id.size() - len == pattern.size() && id.substr(len) == pattern)
+        std::cout << "OK" << std::endl;
 }
