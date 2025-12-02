@@ -34,6 +34,10 @@ void Decoder::split(char del)
 
 void Decoder::idAnalyzer(const std::string id)
 {
+    int check;
+    for (check = 0; check < id.size() && id[0] == id[check]; check++) {}
+    if (check == id.size()) { if (check % 2) std::cout << "OK" << std::endl; }
+
     size_t len = 1;
     for (int i = 1; i < id.size() && id[0] != id[i]; i++) len++;
     if (len == id.size()) return;
