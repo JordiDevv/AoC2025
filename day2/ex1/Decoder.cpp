@@ -34,13 +34,12 @@ void Decoder::split(char del)
 
 void Decoder::idAnalyzer(const std::string id)
 {
-    char beg = id[0];
-    int i;
-    size_t len = 0;
+    size_t len = 1;
+    for (int i = 1; i < id.size() && id[0] != id[i]; i++) len++;
+    if (len == id.size()) return;
 
-    for (i = 0; i < id.size() || beg == id[i]; i++) len++;
-    if (i == id.size()) return;
-    std::string pattern = id.substr(beg, len);
+    std::string pattern = id.substr(0, len);
     if (id.size() - len == pattern.size() && id.substr(len) == pattern)
         std::cout << "OK" << std::endl;
+    else std::cout << "NO" << std::endl;
 }

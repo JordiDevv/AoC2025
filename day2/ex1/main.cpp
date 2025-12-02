@@ -9,6 +9,6 @@ int main ()
     decoder.addNewFile("prueba.txt");
     decoder.parseInput();
     decoder.split(',');
-    decoder.idAnalyzer("9191");
+    decoder.idAnalyzer("911");
     return (0);
 }
