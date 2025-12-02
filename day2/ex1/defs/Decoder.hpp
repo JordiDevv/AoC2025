@@ -2,22 +2,20 @@
 #define DECODER_HPP
 
 #include <fstream>
+#include <vector>
 
 class Decoder
 {
     private:
         std::ifstream file;
         std::string input;
-        int nRanges = 1;
-        char **ranges;
+        std::vector<std::string> ranges;
+        int password = 0;
     public:
         void addNewFile(const char *rute);
         void parseInput();
 
-        int getNRanges();
-        void countRanges(char del);
-        //void split(char del);
-        //void addRange();
+        void split(char del);
 };
 
 #endif

@@ -8,7 +8,6 @@ int main ()
 
     decoder.addNewFile("prueba.txt");
     decoder.parseInput();
-    decoder.countRanges(',');
-    std::cout << decoder.getNRanges() << std::endl;
+    decoder.split(',');
     return (0);
 }

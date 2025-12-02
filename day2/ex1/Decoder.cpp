@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 
-//Reading methods
+//Parsing methods
 void Decoder::addNewFile(const char *rute)
 {
     file.open(rute);
@@ -16,24 +16,21 @@ void Decoder::addNewFile(const char *rute)
 void Decoder::parseInput()
 { if (!std::getline(file, input)) exit(1); }
 
-//Utilities for the "ranges" manipulation
+void Decoder::split(char del)
+{
+    size_t start = 0;
 
-int Decoder::getNRanges() { return nRanges; }
-void Decoder::countRanges(char del)
-{ for (int i = 0; i < input.size(); i++) if (input[i] == del) nRanges++; }
+    for (size_t i = 0; i <= input.size(); i++)
+    {
+        if (i == input.size() || input[i] == del)
+        {
+            ranges.push_back(input.substr(start, i - start));
+            start = i + 1;
+        }
+    }
+}
 
-// void Decoder::split(char del)
-// {
-//     char *beg = &input[0];
-//     char *end;
-//     int i = 0;
-//     for (int j = 0; input; j++)
-//     {
-//         if (input[i] == del && input[i + 1]) continue;
-//         if (input[i + 1] == del)
-//         {
-//             end = &input[i];
-            
-//         }
-//     }
-// }
+void idAnalyzer(const std::string first, const std::string last)
+{
+    
+}
