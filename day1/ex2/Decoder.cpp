@@ -5,7 +5,7 @@
 //Parsing methods
 int Decoder::checkFormat()
 {
-    if (!line.c_str()) return -1;
+    if (!line.empty()) return -1;
 
     const char *order = line.c_str();
     if (order[0] != 'L' && order[0] != 'R')
@@ -17,11 +17,21 @@ int Decoder::checkFormat()
     return std::stoi(line.substr(1));
 }
 
-int Decoder::cleanNumber(int n) { while (n > 99) n -= 100; return n; }
+int Decoder::cleanNumber(int n)
+{
+    while (n > 99)
+    {
+        n -= 100;
+        password++;
+    }
+    return n;
+}
 
 //Decoding methods
 void Decoder::applyOrder(const int n)
 {
+    if (n == 0) return;
+
     const char *order = line.c_str();
     if (order[0] == 'L') decrementPos(n);
     else incrementPos(n);
@@ -30,15 +40,15 @@ void Decoder::applyOrder(const int n)
 void Decoder::decrementPos(const int dec)
 {
     position -= dec;
-    if (position < 0) position += 100;
-    if (position == 0) password++;
+    if (position < 0) {password++; position += 100;}
+    else if (position == 0) password++;
 }
 
 void Decoder::incrementPos(const int inc)
 {
     position += inc;
-    if (position > 99) position -= 100;
-    if (position == 0) password++;
+    if (position > 99) {password++; position -= 100;}
+    else if (position == 0) password++;
 }
 
 //Reading methods
