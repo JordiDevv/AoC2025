@@ -11,12 +11,14 @@ class Decoder
         std::string input;
         std::vector<std::string> ranges;
         int password = 0;
+        std::vector<int> idLimits;
     public:
         void addNewFile(const char *rute);
         void parseInput();
         void split(char del);
 
         void idAnalyzer(std::string id);
+        void parseLimits(const std::string range);
         void incPassword(int inc);
         void getPassword() const;
 };

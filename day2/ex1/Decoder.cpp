@@ -36,7 +36,14 @@ void Decoder::idAnalyzer(const std::string id)
 {
     int check;
     for (check = 0; check < id.size() && id[0] == id[check]; check++) {}
-    if (check == id.size()) { if (check % 2 == 0) std::cout << "OK" << std::endl; }
+    if (check == id.size())
+    {
+        if (check % 2 == 0)
+        {
+            password += std::stoi(id);
+            return;
+        }
+    }
 
     size_t len = 1;
     for (int i = 1; i < id.size() && id[0] != id[i]; i++) len++;
@@ -44,6 +51,17 @@ void Decoder::idAnalyzer(const std::string id)
 
     std::string pattern = id.substr(0, len);
     if (id.size() - len == pattern.size() && id.substr(len) == pattern)
-        std::cout << "OK" << std::endl;
-    else std::cout << "NO" << std::endl;
+        password += std::stoi(id);
+}
+
+void Decoder::parseLimits(const std::string range)
+{
+    int beg = 0;
+    int len;
+    for (len = 0; len < range.size() && range[len] != '-'; len ++) {}
+    idLimits.push_back(std::stoi(range.substr(beg, len)));
+
+    beg = len;
+    for (len = len; len < range.size() && range[len] != '-'; len ++) {}
+    idLimits.push_back(std::stoi(range.substr(beg, len)));
 }
