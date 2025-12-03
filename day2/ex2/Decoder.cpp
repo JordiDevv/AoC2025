@@ -42,7 +42,8 @@ void Decoder::idAnalyzer(const std::string id)
         return;
     }
 
-    if (id.size() % 2 != 0) return;
+    //Ahora sí, debemos extraer un patrón y comprobar que es lo único que se repite
+    //en el string.
 
     size_t half = id.size() / 2;
     std::string p = id.substr(0, half);
