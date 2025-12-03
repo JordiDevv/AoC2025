@@ -40,7 +40,7 @@ void Decoder::idAnalyzer(const std::string id)
     {
         if (check % 2 == 0)
         {
-            password += std::stoi(id);
+            password += std::stol(id);
             return;
         }
     }
@@ -51,7 +51,7 @@ void Decoder::idAnalyzer(const std::string id)
 
     std::string pattern = id.substr(0, len);
     if (id.size() - len == pattern.size() && id.substr(len) == pattern)
-        password += std::stoi(id);
+        password += std::stol(id);
 }
 
 void Decoder::parseLimits(const std::string range)
@@ -59,18 +59,18 @@ void Decoder::parseLimits(const std::string range)
     int beg = 0;
     int len;
     for (len = 0; len < range.size() && range[len] != '-'; len++) {}
-    idLimits.push_back(std::stoi(range.substr(beg, len)));
+    idLimits.push_back(std::stol(range.substr(beg, len)));
 
     beg = len + 1;
     for (len = len + 1; len < range.size() && range[len] != '-'; len ++) {}
-    idLimits.push_back(std::stoi(range.substr(beg, len)));
+    idLimits.push_back(std::stol(range.substr(beg, len)));
 }
 
 //Getters
 
 std::vector<std::string> Decoder::getRanges() const { return ranges; }
-std::vector<int> Decoder::getLimits() const { return idLimits; }
-int Decoder::getPassword() const { return password; }
+std::vector<long> Decoder::getLimits() const { return idLimits; }
+long Decoder::getPassword() const { return password; }
 
 //Utilities
 
