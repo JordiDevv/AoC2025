@@ -37,12 +37,9 @@ void Decoder::idAnalyzer(const std::string id)
     int check;
     for (check = 0; check < id.size() && id[0] == id[check]; check++) {}
     if (check == id.size())
-    {
-        if (check % 2 == 0)
-        {
-            password += std::stol(id);
-            return;
-        }
+    { 
+        password += std::stol(id);
+        return;
     }
 
     if (id.size() % 2 != 0) return;
