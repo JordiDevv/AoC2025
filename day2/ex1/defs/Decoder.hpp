@@ -19,8 +19,12 @@ class Decoder
 
         void idAnalyzer(std::string id);
         void parseLimits(const std::string range);
-        void incPassword(int inc);
-        void getPassword() const;
+
+        int getPassword() const;
+        std::vector<std::string> getRanges() const;
+        std::vector<int> getLimits() const;
+
+        void clearLimits();
 };
 
 #endif

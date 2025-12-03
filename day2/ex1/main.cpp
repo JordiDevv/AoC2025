@@ -9,6 +9,19 @@ int main ()
     decoder.addNewFile("prueba.txt");
     decoder.parseInput();
     decoder.split(',');
-    decoder.idAnalyzer("9999");
+
+    for (int i = 0; i < decoder.getRanges().size(); i++)
+    {
+        decoder.parseLimits(decoder.getRanges()[i]);
+        int id = decoder.getLimits()[0];
+        while (id <= decoder.getLimits()[1])
+        {
+            decoder.idAnalyzer(std::to_string(id));
+            id++;
+        }
+        decoder.clearLimits();
+    }
+
+    std::cout << decoder.getPassword() << std::endl;
     return (0);
 }

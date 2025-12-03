@@ -58,10 +58,20 @@ void Decoder::parseLimits(const std::string range)
 {
     int beg = 0;
     int len;
-    for (len = 0; len < range.size() && range[len] != '-'; len ++) {}
+    for (len = 0; len < range.size() && range[len] != '-'; len++) {}
     idLimits.push_back(std::stoi(range.substr(beg, len)));
 
-    beg = len;
-    for (len = len; len < range.size() && range[len] != '-'; len ++) {}
+    beg = len + 1;
+    for (len = len + 1; len < range.size() && range[len] != '-'; len ++) {}
     idLimits.push_back(std::stoi(range.substr(beg, len)));
 }
+
+//Getters
+
+std::vector<std::string> Decoder::getRanges() const { return ranges; }
+std::vector<int> Decoder::getLimits() const { return idLimits; }
+int Decoder::getPassword() const { return password; }
+
+//Utilities
+
+void Decoder::clearLimits() { idLimits.clear(); }
