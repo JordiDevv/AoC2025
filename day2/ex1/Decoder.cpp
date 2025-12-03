@@ -45,13 +45,11 @@ void Decoder::idAnalyzer(const std::string id)
         }
     }
 
-    size_t len = 1;
-    for (int i = 1; i < id.size() && id[0] != id[i]; i++) len++;
-    if (len == id.size()) return;
+    if (id.size() % 2 != 0) return;
 
-    std::string pattern = id.substr(0, len);
-    if (id.size() - len == pattern.size() && id.substr(len) == pattern)
-        password += std::stol(id);
+    size_t half = id.size() / 2;
+    std::string p = id.substr(0, half);
+    if (id.substr(half) == p) { password += std::stol(id); }
 }
 
 void Decoder::parseLimits(const std::string range)
